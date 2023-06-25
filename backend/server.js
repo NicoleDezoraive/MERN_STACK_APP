@@ -1,5 +1,5 @@
 require('dotenv').config();
-var cors = require('cors')
+// var cors = require('cors')
 const express = require('express');
 const mongoose = require('mongoose');
 const workoutRoutes = require('./routes/workouts');
@@ -19,13 +19,13 @@ app.use((req, res, next) => {
 //routes
 app.use("/api/workouts",workoutRoutes);
 
-const origin = process.env.ORIGIN;
-app.use(
-    cors({
-        credentials: true,
-        origin,
-    })
-)
+// const origin = process.env.ORIGIN;
+// app.use(
+//     cors({
+//         credentials: true,
+//         origin,
+//     })
+// )
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
