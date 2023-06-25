@@ -12,8 +12,8 @@ const Home = () => {
     useEffect(() => {
       const fetchWorkouts = async () => {
         console.log(target);
-        const response = await fetch(`${target}/api/workouts`);
-
+        // const response = await fetch(`${target}/api/workouts`);
+        const response = await fetch('/api/workouts');
         try {
           const json = await response.json();
           if (response.ok) {
