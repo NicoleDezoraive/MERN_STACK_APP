@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import Header from "../components/Header";
 
 const Login = () => {
 
@@ -13,10 +14,26 @@ const Login = () => {
         await login(email, password);
     }
 
+    const handleCallbackResponse = (response) => {
+        console.log("Encoded JWT ID token: " + response.credential);
+    }
+    
+    // useEffect(() => {
+    //     /* global google */
+    //     google.accounts.id.initialize({
+    //       client_id: process.env.CLIENT_ID,
+    //       callback: handleCallbackResponse
+    //     })
+    
+    //     google.accounts.id.renderButton(
+    //       document.getElementById("signInDiv"),
+    //       { theme: "outline", size: "large"}
+    //     );
+    //   }, [])
+
     return ( 
         <form className="login" onSubmit={handleSubmit}>
-            <h3>Log in</h3>
-
+            <Header title="Log in" />
             <label>Email address:</label>
             <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
@@ -24,6 +41,7 @@ const Login = () => {
             <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 
             <button disabled={isLoading}>Log in</button>
+            <div className="google-click" id="signInDiv"></div>
             {error && <div className="error">{error}</div>}
         </form>
      );

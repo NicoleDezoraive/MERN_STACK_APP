@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import Header from "../components/Header";
 
 const Signup = () => {
 
@@ -14,8 +15,7 @@ const Signup = () => {
 
     return ( 
         <form className="signup" onSubmit={handleSubmit}>
-            <h3>Sign up</h3>
-
+            <Header title="Sign up" />
             <label>Email address:</label>
             <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
